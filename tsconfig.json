@@ -3,9 +3,8 @@
   "include": [
     "**/*"
   ],
-  "exclude": [
-    "node_modules",
-    "build"
+  "exclude": ["exclude", "node_modules", "build", "tmp", "test/**/*.spec.ts", "database/migrations/*.js",
+
   ],
   "compilerOptions": {
     "outDir": "build",
@@ -36,3 +35,38 @@
     ]
   }
 }
+
+// {
+//   "extends": "adonis-preset-ts/tsconfig.json",
+//   "include": [
+//     "app/**/*.ts",
+//     "config/**/*.ts",
+//     "contracts/**/*.ts",
+//     //"database/**/*.ts",
+//     "start/**/*.ts",
+//     "test/**/*.ts",
+//     "types/**/*.d.ts"
+//   ],
+//   "exclude": ["exclude", "node_modules", "build", "tmp", "test/**/*.spec.ts", "database/migrations/*.js",
+//   ],
+//   "compilerOptions": {
+//     "outDir": "build",
+//     "rootDir": "./",
+//     "sourceMap": true,
+//     "paths": {
+//       "App/*": ["./app/*"],
+//       "Config/*": ["./config/*"],
+//       "Contracts/*": ["./contracts/*"],
+//       "Database/*": ["./database/*"]
+//     },
+//     "types": [
+//       "@adonisjs/core",
+//       "@adonisjs/repl",
+//       "@adonisjs/session",
+//       "@adonisjs/view",
+//       "@adonisjs/shield",
+//       "@japa/preset-adonis/build/adonis-typings",
+//       "@adonisjs/lucid"
+//     ]
+//   }
+// }
