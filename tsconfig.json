@@ -3,8 +3,12 @@
   "include": [
     "**/*"
   ],
-  "exclude": ["exclude", "node_modules", "build", "tmp", "test/**/*.spec.ts", "database/migrations/*.js",
-
+  "exclude": [
+    "node_modules",
+    "build",
+    "tmp",
+    "test/**/*.spec.ts",
+    "database/migrations/*.js"
   ],
   "compilerOptions": {
     "outDir": "build",
