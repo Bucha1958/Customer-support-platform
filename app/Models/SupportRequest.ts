@@ -12,11 +12,23 @@ export default class SupportRequest extends BaseModel {
   @column.dateTime({ autoCreate: true, autoUpdate: true })
   public updatedAt: DateTime;
 
-  @column({ columnName: 'title' })
+  @column({ columnName: 'first_name' })
+  public firstName: string;
+
+  @column({ columnName: 'last_name' })
+  public lastName: string;
+
+  @column({ columnName: 'email' })
+  public email: string;
+
+  @column({ columnName: 'support_message_title' })
   public title: string;
 
-  @column({ columnName: 'text' })
+  @column({ columnName: 'support_message_text' })
   public text: string;
+
+  @column({ columnName: 'user_id' })
+  public userId: number;
 
   @column({ columnName: 'file' })
   public file: string;

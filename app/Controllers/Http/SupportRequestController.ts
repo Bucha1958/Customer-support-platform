@@ -1,4 +1,3 @@
-
 import { HttpContextContract } from '@ioc:Adonis/Core/HttpContext';
 import User from 'App/Models/User';
 import SupportRequest from 'App/Models/SupportRequest';
@@ -33,16 +32,29 @@ export default class SupportRequestController {
       schema: validationSchema,
     });
 
-    // Find or create the user based on the provided email address
-    const user = await User.firstOrCreate({ email: validatedData.email }, {
+    // Check if the email already exists
+    const existingUser = await User.findBy('email', validatedData.email);
+    if (existingUser) {
+      return response.status(422).send({
+        error: 'The provided email address is already taken.',
+      });
+    }
+    
+    // Create a separate object for user creation
+    const userCreationData = {
+      email: validatedData.email,
       full_name: `${validatedData.first_name} ${validatedData.last_name}`,
-    });
+    };
+
+    // Find or create the user based on the provided email address
+    const user = await User.firstOrCreate({ email: userCreationData.email }, userCreationData);
+
 
     // Move the uploaded file to a local drive
     const file = request.file('file')!;
     const fileName = `${Date.now()}_${file.clientName}`;
-    await file.move(request.tmpPath('uploads'), {
-    await file.move(Application.tmpPath('uploads')
+    await file.move('public/uploads', {
+      name: fileName,
     });
 
     // Create the support request
@@ -57,7 +69,4 @@ export default class SupportRequestController {
     // Send a success response with status 201 Created
     response.created({ success: 'Support request submitted successfully!' });
   }
-
-
-
 }
