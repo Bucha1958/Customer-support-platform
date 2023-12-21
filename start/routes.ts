@@ -23,3 +23,12 @@ import Route from '@ioc:Adonis/Core/Route'
 Route.get('/', async ({ view }) => {
   return view.render('welcome')
 })
+
+Route.group(() => {
+  // Route to show the support request form
+  Route.get('/support', 'SupportRequestController.showForm');
+
+  // Route to handle the submission of the support request form
+  Route.post('/support', 'SupportRequestController.create');
+})
+
