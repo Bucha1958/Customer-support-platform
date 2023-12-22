@@ -18,7 +18,7 @@ export default class SupportRequest extends BaseModel {
   @column({ columnName: 'last_name' })
   public lastName: string;
 
-  @column({ columnName: 'email' })
+  @column({ columnName: 'email_address' })
   public email: string;
 
   @column({ columnName: 'support_message_title' })

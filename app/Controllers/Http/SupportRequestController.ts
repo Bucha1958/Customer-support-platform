@@ -59,6 +59,9 @@ export default class SupportRequestController {
 
     // Create the support request
     const supportRequest = new SupportRequest();
+    supportRequest.firstName = validatedData.first_name;
+    supportRequest.lastName = validatedData.last_name;
+    supportRequest.email = validatedData.email;
     supportRequest.title = validatedData.title;
     supportRequest.text = validatedData.text;
     supportRequest.file = fileName;
